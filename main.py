@@ -20,13 +20,19 @@ for num in OddIterator(lst):
 
 
 #2
-def SquareGenerator(data):
-    for item in data:
-        item=item*item
-        yield item
-
-for num in SquareGenerator(lst):
-    print(num)
+class SquareGenerator():
+    def __init__(self, n):
+        if not isinstance(n, (int, float)):
+            raise TypeError(":(")
+        self.n=n
+    def gen(self):
+        for i in range(1, int(self.n)+1):
+            yield i**2
+try:
+    for num in SquareGenerator(20).gen():
+        print(num)
+except TypeError as e:
+    print(e)
 
 
 
